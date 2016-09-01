@@ -1,9 +1,9 @@
 #some numerical methods for solving ODEs.
 """
       simple_euler(f, n, x0, dt)
-      OUT: array_solutions, array_time 
+      OUT: array_solutions, array_time
 
-Is the simple Euler's method for solving ODEs. Where f is the function of type x' = f(x),
+Is the simple Euler's method for solving ODEs. Where `f` is the function of type x' = f(x),
 n is the number of steps, `x0` is the initial condition, and `dt` is the time step.
 
 """
@@ -26,7 +26,14 @@ function simple_euler(f::Function, n, x0, dt)
 
 end
 
-#Similar to simple_euler but with new iteration rule. It is a second order method.
+"""
+      improved_euler(f, n, x0, dt)
+      OUT: array_solutions, array_time
+
+Similar to simple_euler but with new iteration rule. It is a second order method. `f` is the function of type `x' = f(x)`,
+n is the number of steps, `x0` is the initial condition, and `dt` is the time step.
+
+"""
 function improved_euler(f::Function, n, x0, dt)
 
     trayectory = [x0]
