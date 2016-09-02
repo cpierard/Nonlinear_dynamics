@@ -1,4 +1,5 @@
 #some numerical methods for solving ODEs.
+
 """
       simple_euler(f, n, x0, dt)
       OUT: array_solutions, array_time
@@ -53,6 +54,15 @@ function improved_euler(f::Function, n, x0, dt)
 end
 
 #Famous Runge-Kutta method. 4 order method
+
+"""
+      runge_kutta(f, n, x0, dt)
+      OUT: array_solutions, array_time
+
+An ODE integrator with an error of order two. It is a second order method. `f` is the function of type `x' = f(x)`,
+n is the number of steps, `x0` is the initial condition, and `dt` is the time step.
+
+"""
 function runge_kutta(f::Function, n, x0, dt)
 
     trayectory = collect(x0)
@@ -73,6 +83,14 @@ function runge_kutta(f::Function, n, x0, dt)
     return trayectory, time
 end
 
+"""
+      plot_rate(f, xi, xf, interval)
+      OUT: plot(xs, fun)
+
+This is a tools that I use for doing a geometric analysis of a diferential equation of the form `x' = f(x)`. `f` is the function, xi is the
+initial value of the range, `xf` is the final value, and `interval` is the interval between `xi` and `xf`.
+"""
+
 function plot_rate(f::Function, xi, xf, interval) #For a geometric interpretation
 
     fun = []
@@ -90,6 +108,15 @@ function plot_rate(f::Function, xi, xf, interval) #For a geometric interpretatio
     ylabel("f(x)")
 end
 
+"""
+      logistic_equation(x0, r)
+      OUT: x
+
+The logistic equation as a funtion, where `r` is the rate parameter and `x0` is the initial condition. The function evaluates the `x0`
+and throws out the new value for `x`.
+
+"""
+
 function logistic_equation(x0, r)
 
     x = r*x0*(1-x0)
@@ -97,7 +124,20 @@ function logistic_equation(x0, r)
 
 end
 
-function logistic_iterator(x0, r, n, yn::Bool)
+"""
+      logistic_iterator(x0, r, n, yn::Bool)
+      OUT:  iteration_serie, evaluations
+            println(evaluations[n+1])
+
+            (when yn = true): plot(iteration_serie, evaluations)
+
+This function iterates the logistic equation, and gives back a `plot()` of the number of iteration vs. the recursive evaluations of the
+logistic equation. `x0` is the initial condition, `r` is the rate parameter, n is the number of iterations, and `yn` is an optional argument,
+when `true`, the function will plot the solutions.
+
+"""
+
+function logistic_iterator(x0, r, n, plt::Bool)
 
     solutions = []
     times = collect(0:n)
@@ -123,6 +163,14 @@ function logistic_iterator(x0, r, n, yn::Bool)
     println(solutions[n+1])
 
 end
+
+"""
+      iterator(f, n, x0)
+      OUT:  steps, solutions
+
+This is a function used to iterate a single variable function `f` (R -> R).
+
+"""
 
 function iterator(f::Function, n::Int, x0)
 
