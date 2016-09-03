@@ -137,7 +137,7 @@ when `true`, the function will plot the solutions.
 
 """
 
-function logistic_iterator(x0, r, n, plt::Bool)
+function logistic_iterator(x0, r, n, yn::Bool)
 
     solutions = []
     times = collect(0:n)
