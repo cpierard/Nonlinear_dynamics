@@ -188,3 +188,57 @@ function iterator(f::Function, n::Int, x0)
     return steps, solution
 
 end
+
+"""
+        cobweb_plot(f::Function, x0, rangex, n)
+
+Función que hace el mapeo tipo cobweb. Este se usa cuando el plot no se a definido.
+"""
+
+
+function cobweb_plot(f::Function, x0, rangex, n)
+
+    xx = [x0]
+    fx = [0.0]
+    for it = 1:n
+
+          x1 = f(x0)
+          push!(xx, x0)
+          push!(fx, x1)
+          x0 = x1
+          push!(xx,x1)
+          push!(fx,x1)
+
+      end
+
+    plot(rangex, f, xaxis=(L"x", (rangex[1], rangex[end])), yaxis=L"F(x)")
+    plot!(rangex, identity)
+    plot!(xx, fx, marker=(:dot, 3, 0.4))
+
+end
+
+"""
+        cobweb_plot!(f::Function, x0, rangex, n)
+
+Función que agrega un `plot!` a `cobweb_plot`. No funciona sin haber hecho primero un `cobweb_plot` con los mismos
+parámetros de que `cobweb_plot!`.
+"""
+
+function cobweb_plot!(f::Function, x0, rangex, n)
+
+    xx = [x0]
+    fx = [0.0]
+    for it = 1:n
+
+        x1 = f(x0)
+        push!(xx, x0)
+        push!(fx, x1)
+        x0 = x1
+        push!(xx,x1)
+        push!(fx,x1)
+
+    end
+
+    plot!(xx, fx, marker=(:dot, 3, 0.4))
+
+end
