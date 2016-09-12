@@ -125,19 +125,15 @@ function logistic_equation(x0, r)
 end
 
 """
-      logistic_iterator(x0, r, n, yn::Bool)
+      logistic_iterator(x0, r, n)
       OUT:  iteration_serie, evaluations
-            println(evaluations[n+1])
 
-            (when yn = true): plot(iteration_serie, evaluations)
-
-This function iterates the logistic equation, and gives back a `plot()` of the number of iteration vs. the recursive evaluations of the
-logistic equation. `x0` is the initial condition, `r` is the rate parameter, n is the number of iterations, and `yn` is an optional argument,
-when `true`, the function will plot the solutions.
+This function iterates the logistic equation, and gives back the number of iteration vs. the recursive evaluations of the
+logistic equation. `x0` is the initial condition, `r` is the rate parameter, n is the number of iterations, and `yn` is an optional argument.
 
 """
 
-function logistic_iterator(x0, r, n, yn::Bool)
+function logistic_iterator(x0, r, n)
 
     solutions = []
     times = collect(0:n)
@@ -152,15 +148,7 @@ function logistic_iterator(x0, r, n, yn::Bool)
 
     end
 
-    plot(times, solutions)
-
-    if yn == true
-
-        plot(times, solutions, ".")
-
-    end
-
-    println(solutions[n+1])
+    return times, solutions
 
 end
 
