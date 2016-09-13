@@ -163,17 +163,17 @@ This is a function used to iterate a single variable function `f` (R -> R).
 function iterator(f::Function, n::Int, x0)
 
     solution = Float64[x0]
-    steps = Int[0]
+    #steps = Int[0]
     x_old = x0
     for i in 1:n
 
         x_new = f(solution[i])
         push!(solution, x_new)
-        push!(steps, i)
+        #push!(steps, i)
 
     end
 
-    return steps, solution
+    return solution
 
 end
 
