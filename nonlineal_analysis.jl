@@ -267,3 +267,19 @@ function bifurcation(x0, n, range_r, k)
     return r_par, orbit
 
 end
+
+function list()
+  println(" bifurcation(x0, n, range_r, k)")
+  println(" cobweb_plot!(f::Function, x0, rangex, n)")
+  println(" cobweb_plot(f::Function, x0, rangex, n)")
+  println(" iterator(f::Function, n::Int, x0)")
+  println(" logistic_iterator(x0, r, n)")
+  println(" logistic_equation(x0, r)")
+  println(" plot_rate(f::Function, xi, xf, interval)")
+  println(" runge_kutta(f::Function, n, x0, dt)")
+  println(" improved_euler(f::Function, n, x0, dt)")
+  println(" simple_euler(f::Function, n, x0, dt)")
+
+end
+
+println("nonlineal_analyisi.jl")
